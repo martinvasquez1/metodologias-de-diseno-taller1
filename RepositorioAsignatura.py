@@ -1,26 +1,26 @@
 from Asignatura import Asignatura
-from typing import Optional
+from typing import List, Optional
 
 
 class RepositorioAsignatura:
-    def __init__(self):
-        self.asignaturas = []
+    def __init__(self) -> None:
+        self.asignaturas: List[Asignatura] = []
 
-    def crear_asignatura(self, nombre, codigo, creditos) -> Asignatura:
+    def crear_asignatura(self, nombre: str, codigo: str, creditos: int) -> Asignatura:
         nueva_asignatura = Asignatura(nombre, codigo, creditos)
         self.asignaturas.append(nueva_asignatura)
         return nueva_asignatura
 
-    def obtener_asignaturas(self):
+    def obtener_asignaturas(self) -> List[Asignatura]:
         return self.asignaturas
 
-    def obtener_asignatura(self, codigo) -> Optional[Asignatura]:
+    def obtener_asignatura(self, codigo: str) -> Optional[Asignatura]:
         for asignatura in self.asignaturas:
             if asignatura.codigo == codigo:
                 return asignatura
         return None
 
-    def modificar_asignatura(self, codigo, nombre=None, creditos=None) -> Asignatura:
+    def modificar_asignatura(self, codigo: str, nombre: Optional[str] =None, creditos: Optional[int] =None) -> Optional[Asignatura]:
         for asignatura in self.asignaturas:
             if asignatura.codigo == codigo:
                 if nombre is not None:
@@ -30,7 +30,7 @@ class RepositorioAsignatura:
 
         return asignatura
 
-    def eliminar_asignatura(self, codigo) -> Optional[Asignatura]:
+    def eliminar_asignatura(self, codigo: str) -> Optional[Asignatura]:
         for asignatura in self.asignaturas:
             if asignatura.codigo == codigo:
                 self.asignaturas.remove(asignatura)

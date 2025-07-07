@@ -1,6 +1,5 @@
 from enum import Enum
 
-
 class Nivel(Enum):
     PREGRADO = "Pregrado"
     MAGISTER = "Magister"
@@ -9,8 +8,8 @@ class Nivel(Enum):
 
 
 class Asignatura:
-    def __init__(self, nombre, codigo, creditos, nivel: Nivel):
-        self.nombre = nombre
-        self.codigo = codigo
-        self.creditos = creditos
-        self.nivel = nivel
+    def __init__(self, nombre: str, codigo: str, creditos: int, nivel: Nivel) -> None:
+        self.nombre: str = nombre
+        self.codigo: str = codigo
+        self.creditos: int = creditos
+        self.nivel: Nivel = nivel
