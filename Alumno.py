@@ -1,16 +1,19 @@
 from abc import ABC, abstractmethod
+from Asignatura import Nivel
 
 
 class Alumno(ABC):
-    def __init__(self, nombre, edad, rut):
+    def __init__(self, nombre: str, edad: int, rut: str, nivel: Nivel):
         self.nombre = nombre
         self.edad = edad
         self.rut = rut
+        self.nivel = nivel
 
 
 # No estudia ni puede hacer ayudantias
 class Alumni(Alumno):
-    pass
+    def __init__(self, nombre, edad, rut):
+        super().__init__(nombre, edad, rut, Nivel.ALUMNI)
 
 
 class IEstudiar(ABC):
@@ -22,7 +25,7 @@ class IEstudiar(ABC):
 # Solo estudia
 class EstudianteComun(Alumno, IEstudiar):
     def __init__(self, nombre, edad, rut):
-        super().__init__(nombre, edad, rut)
+        super().__init__(nombre, edad, rut, Nivel.PREGRADO)
         self.asignaturas = []
 
     def estudiar(self):
@@ -38,7 +41,7 @@ class IAyudante(ABC):
 # Pueden estudiar y hacer ayudantías
 class EstudianteAyudante(Alumno, IAyudante):
     def __init__(self, nombre, edad, rut):
-        super().__init__(nombre, edad, rut)
+        super().__init__(nombre, edad, rut, Nivel.PREGRADO)
         self.asignaturas = []
 
     def estudiar(self):
@@ -57,7 +60,7 @@ class IClases(ABC):
 # Estudia y hace clases
 class EstudianteMagister(Alumno, IEstudiar, IClases):
     def __init__(self, nombre, edad, rut):
-        super().__init__(nombre, edad, rut)
+        super().__init__(nombre, edad, rut, Nivel.MAGISTER)
         self.asignaturas = []
 
     def estudiar(self):
@@ -76,7 +79,7 @@ class IInvestigar(ABC):
 # Estudia, hace clases e investiga
 class EstudianteDoctorado(Alumno, IEstudiar, IClases, IInvestigar):
     def __init__(self, nombre, edad, rut):
-        super().__init__(nombre, edad, rut)
+        super().__init__(nombre, edad, rut, Nivel.DOCTORADO)
         self.asignaturas = []
 
     def estudiar(self):
