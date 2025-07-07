@@ -49,7 +49,7 @@ class RepositorioAlumno:
                 return alumno
         return None
 
-    def modificar_alumno(self, rut, nombre=None, edad=None) -> Alumno:
+    def modificar_alumno(self, rut, nombre=None, edad=None) -> Optional[Alumno]:
         for alumno in self.alumnos:
             if alumno.rut == rut:
                 if nombre is not None:
@@ -57,11 +57,11 @@ class RepositorioAlumno:
                 if edad is not None:
                     alumno.edad = edad
 
-        return alumno
+                return alumno
 
-    def eliminar_alumno(self, rut) -> Optional[Alumno]:
+        return None
+
+    def eliminar_alumno(self, rut) -> None:
         for alumno in self.alumnos:
             if alumno.rut == rut:
                 self.alumnos.remove(alumno)
-                return Alumno
-        return None
