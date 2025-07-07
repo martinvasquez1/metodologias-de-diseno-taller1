@@ -1,13 +1,16 @@
-from Asignatura import Asignatura
 from typing import List, Optional
+
+from Asignatura import Asignatura, Nivel
 
 
 class RepositorioAsignatura:
     def __init__(self) -> None:
         self.asignaturas: List[Asignatura] = []
 
-    def crear_asignatura(self, nombre: str, codigo: str, creditos: int) -> Asignatura:
-        nueva_asignatura = Asignatura(nombre, codigo, creditos)
+    def crear_asignatura(
+        self, nombre: str, codigo: str, creditos: int, nivel: Nivel
+    ) -> Asignatura:
+        nueva_asignatura = Asignatura(nombre, codigo, creditos, nivel)
         self.asignaturas.append(nueva_asignatura)
         return nueva_asignatura
 
@@ -20,7 +23,9 @@ class RepositorioAsignatura:
                 return asignatura
         return None
 
-    def modificar_asignatura(self, codigo: str, nombre: Optional[str] =None, creditos: Optional[int] =None) -> Optional[Asignatura]:
+    def modificar_asignatura(
+        self, codigo: str, nombre: Optional[str] = None, creditos: Optional[int] = None
+    ) -> Optional[Asignatura]:
         for asignatura in self.asignaturas:
             if asignatura.codigo == codigo:
                 if nombre is not None:
