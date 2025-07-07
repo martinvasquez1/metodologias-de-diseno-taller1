@@ -21,6 +21,10 @@ class IEstudiar(ABC):
 
 # Solo estudia
 class EstudianteComun(Alumno, IEstudiar):
+    def __init__(self, nombre, edad, rut):
+        super().__init__(nombre, edad, rut)
+        self.asignaturas = []
+
     def estudiar(self):
         print("Estudiante comun estudiando")
 
@@ -33,6 +37,10 @@ class IAyudante(ABC):
 
 # Pueden estudiar y hacer ayudantías
 class EstudianteAyudante(Alumno, IAyudante):
+    def __init__(self, nombre, edad, rut):
+        super().__init__(nombre, edad, rut)
+        self.asignaturas = []
+
     def estudiar(self):
         print("Estudiante ayudante estudiando")
 
@@ -48,6 +56,10 @@ class IClases(ABC):
 
 # Estudia y hace clases
 class EstudianteMagister(Alumno, IEstudiar, IClases):
+    def __init__(self, nombre, edad, rut):
+        super().__init__(nombre, edad, rut)
+        self.asignaturas = []
+
     def estudiar(self):
         print("Estudiante magister estudiando")
 
@@ -63,6 +75,10 @@ class IInvestigar(ABC):
 
 # Estudia, hace clases e investiga
 class EstudianteDoctorado(Alumno, IEstudiar, IClases, IInvestigar):
+    def __init__(self, nombre, edad, rut):
+        super().__init__(nombre, edad, rut)
+        self.asignaturas = []
+
     def estudiar(self):
         print("Estudiante doctorado estudiando")
 
