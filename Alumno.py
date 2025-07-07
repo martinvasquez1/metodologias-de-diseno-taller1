@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class IAlumno(ABC):
+class Alumno(ABC):
     def __init__(self, nombre, edad, rut):
         self.nombre = nombre
         self.edad = edad
@@ -9,7 +9,7 @@ class IAlumno(ABC):
 
 
 # No estudia ni puede hacer ayudantias
-class Alumni(IAlumno):
+class Alumni(Alumno):
     pass
 
 
@@ -20,7 +20,7 @@ class IEstudiar(ABC):
 
 
 # Solo estudia
-class EstudianteComun(IAlumno, IEstudiar):
+class EstudianteComun(Alumno, IEstudiar):
     def estudiar(self):
         print("Estudiante comun estudiando")
 
@@ -32,7 +32,7 @@ class IAyudante(ABC):
 
 
 # Pueden estudiar y hacer ayudantías
-class EstudianteAyudante(IAlumno, IAyudante):
+class EstudianteAyudante(Alumno, IAyudante):
     def estudiar(self):
         print("Estudiante ayudante estudiando")
 
@@ -47,7 +47,7 @@ class IClases(ABC):
 
 
 # Estudia y hace clases
-class EstudianteMagister(IEstudiar, IClases):
+class EstudianteMagister(Alumno, IEstudiar, IClases):
     def estudiar(self):
         print("Estudiante magister estudiando")
 
@@ -62,7 +62,7 @@ class IInvestigar(ABC):
 
 
 # Estudia, hace clases e investiga
-class EstudianteDoctorado(IEstudiar, IClases, IInvestigar):
+class EstudianteDoctorado(Alumno, IEstudiar, IClases, IInvestigar):
     def estudiar(self):
         print("Estudiante doctorado estudiando")
 
@@ -70,4 +70,4 @@ class EstudianteDoctorado(IEstudiar, IClases, IInvestigar):
         print("Estudiante doctorado haciendo clases")
 
     def hacer_investigacion(self):
-        print("Estudiante doctorado haciendo clases")
+        print("Estudiante doctorado haciendo investigación")
