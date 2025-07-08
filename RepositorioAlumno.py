@@ -1,4 +1,5 @@
 from typing import Optional
+import random
 
 from Asignatura import Asignatura, Nivel
 from Alumno import (
@@ -71,3 +72,18 @@ class RepositorioAlumno:
 
         if alumno:
             alumno.asignaturas.append(Asignatura)
+
+    def desacargar_notas(self, rut):
+        alumno = self.obtener_alumno(rut)
+
+        if not alumno:
+            return None
+
+        print("Descargando notas de asignatuas para:", rut, "\n")
+
+        for asignatura in alumno.asignaturas:
+            notas = [round(random.uniform(1, 7), 1) for _ in range(3)]
+            print(asignatura.nombre)
+
+            for nota in notas:
+                print("- ", nota)

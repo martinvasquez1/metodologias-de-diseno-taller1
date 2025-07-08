@@ -58,10 +58,7 @@ def main() -> None:
     repo_alumno.cursar_asignatura("11.111.111-1", asignatura2)
     repo_alumno.cursar_asignatura("11.111.111-1", asignatura3)
 
-    asignaturas = repo_alumno.obtener_alumno("11.111.111-1").asignaturas
-
-    for asignatura in asignaturas:
-        print(asignatura.nombre)
+    repo_alumno.desacargar_notas("11.111.111-1")
 
 
 if __name__ == "__main__":
