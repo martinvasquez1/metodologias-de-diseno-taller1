@@ -52,6 +52,17 @@ def main() -> None:
     asignatura_con_codigo = repo_asignaturas.obtener_asignatura("303")
     print(asignatura_con_codigo.nombre)
 
+    print("Se asignan asignaturas")
+
+    repo_alumno.cursar_asignatura("11.111.111-1", asignatura1)
+    repo_alumno.cursar_asignatura("11.111.111-1", asignatura2)
+    repo_alumno.cursar_asignatura("11.111.111-1", asignatura3)
+
+    asignaturas = repo_alumno.obtener_alumno("11.111.111-1").asignaturas
+
+    for asignatura in asignaturas:
+        print(asignatura.nombre)
+
 
 if __name__ == "__main__":
     main()

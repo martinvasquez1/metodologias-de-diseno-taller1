@@ -1,6 +1,6 @@
 from typing import Optional
 
-from Asignatura import Nivel
+from Asignatura import Asignatura, Nivel
 from Alumno import (
     Alumno,
     Alumni,
@@ -65,3 +65,9 @@ class RepositorioAlumno:
         for alumno in self.alumnos:
             if alumno.rut == rut:
                 self.alumnos.remove(alumno)
+
+    def cursar_asignatura(self, rut: str, Asignatura: Asignatura) -> None:
+        alumno = self.obtener_alumno(rut)
+
+        if alumno:
+            alumno.asignaturas.append(Asignatura)
