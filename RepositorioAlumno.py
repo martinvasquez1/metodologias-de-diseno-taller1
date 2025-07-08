@@ -67,11 +67,20 @@ class RepositorioAlumno:
             if alumno.rut == rut:
                 self.alumnos.remove(alumno)
 
-    def cursar_asignatura(self, rut: str, Asignatura: Asignatura) -> None:
+    def cursar_asignatura(self, rut: str, asignatura: Asignatura) -> None:
         alumno = self.obtener_alumno(rut)
 
-        if alumno:
-            alumno.asignaturas.append(Asignatura)
+        if not alumno:
+            return None
+
+        if asignatura.nivel.value != alumno.nivel.value:
+            print(
+                "(!) Este alumno no puede cursar esta asignatura para",
+                asignatura.nivel.value,
+            )
+            return None
+
+        alumno.asignaturas.append(asignatura)
 
     def desacargar_notas(self, rut):
         alumno = self.obtener_alumno(rut)
