@@ -88,7 +88,7 @@ class RepositorioAlumno:
         if not alumno:
             return None
 
-        print("Descargando notas de asignatuas para:", rut, "\n")
+        print("Descargando notas de asignatuas para:", rut)
 
         for asignatura in alumno.asignaturas:
             notas = [round(random.uniform(1, 7), 1) for _ in range(3)]

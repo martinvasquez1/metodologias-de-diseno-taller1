@@ -22,18 +22,18 @@ def main() -> None:
     alumno3.estudiar()
     alumno3.hacer_clases()
 
-    print("Obteniendo alumno por rut 22.222.222-2")
+    print("(*) Obteniendo alumno por rut 22.222.222-2")
     por_rut = repo_alumno.obtener_alumno("22.222.222-2")
     print(por_rut.nombre)
 
-    print("Modifciando alumno por rut 11.111.111-1")
+    print("(*) Modifciando alumno por rut 11.111.111-1")
     modificar_rut = repo_alumno.modificar_alumno("11.111.111-1", "Elías")
     print(modificar_rut.nombre)
 
-    print("Eliminando alumno por rut 21.212.212.2")
+    print("(*) Eliminando alumno por rut 21.212.212.2")
     repo_alumno.eliminar_alumno("21.212.212-2")
 
-    print("\n", "--- Creamos asignaturas ---", "\n")
+    print("\n--- Creamos asignaturas ---\n")
 
     asignatura1 = repo_asignaturas.crear_asignatura(
         "Matemáticas", "101", "5", Nivel.PREGRADO
@@ -44,19 +44,34 @@ def main() -> None:
     asignatura3 = repo_asignaturas.crear_asignatura(
         "Metodología", "303", "7", Nivel.MAGISTER
     )
+    asignatura4 = repo_asignaturas.crear_asignatura(
+        "Autómatas", "707", "5", Nivel.PREGRADO
+    )
 
+    print(asignatura4.nombre)
     print(asignatura1.creditos)
     print(asignatura2.nombre)
     print(asignatura3.codigo)
 
+    print("(*) Obtenemos asignatura")
     asignatura_con_codigo = repo_asignaturas.obtener_asignatura("303")
     print(asignatura_con_codigo.nombre)
 
-    print("Se asignan asignaturas")
+    print("(*) Actualizamos asignatura")
+    repo_asignaturas.modificar_asignatura("707", "Nuevo nombre")
+    print(asignatura4.nombre)
+
+    print("(*) Eliminamos asignatura")
+    repo_asignaturas.eliminar_asignatura("707")
+
+    print("(*) Se asignan asignaturas")
+    print("Una de las asginatuas es solo para magister, por lo que no se añadira")
 
     repo_alumno.cursar_asignatura("11.111.111-1", asignatura1)
     repo_alumno.cursar_asignatura("11.111.111-1", asignatura2)
     repo_alumno.cursar_asignatura("11.111.111-1", asignatura3)
+
+    print("(*) Se descargan asignaturas")
 
     repo_alumno.desacargar_notas("11.111.111-1")
 
